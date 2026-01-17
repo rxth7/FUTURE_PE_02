@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan | Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Alex Morgan, a Data Analyst specializing in Python, SQL, and Data Visualization.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a', // Slate 900
+                        secondary: '#334155', // Slate 700
+                        accent: '#0ea5e9', // Sky 500
+                        accentHover: '#0284c7', // Sky 600
+                        light: '#f8fafc', // Slate 50
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Animation Utilities */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphism for Nav */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary font-sans antialiased selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-full">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-serif font-bold text-primary tracking-tight">
+                        AM<span class="text-accent">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-secondary hover:text-accent font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-secondary hover:text-accent font-medium transition-colors">Skills</a>
+                    <a href="#projects" class="text-secondary hover:text-accent font-medium transition-colors">Projects</a>
+                    <a href="#resume" class="text-secondary hover:text-accent font-medium transition-colors">Resume</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition-colors shadow-lg shadow-blue-500/20">
+                        Let's Talk
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md">About</a>
+                <a href="#skills" class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md">Skills</a>
+                <a href="#projects" class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md">Projects</a>
+                <a href="#resume" class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md">Resume</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent font-semibold">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-accent/5 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-blue-600/5 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 fade-in-up">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-accent text-sm font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent mr-2 animate-pulse"></span>
+                        Available for Internship / Junior Roles
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-6">
+                        Turning Raw Data Into <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-600">Actionable Insights</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
+                        Hi, I'm <strong>Alex Morgan</strong>. A Junior Data Analyst passionate about uncovering trends, visualizing data, and driving business decisions through SQL, Python, and Tableau.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="px-7 py-3.5 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-all shadow-xl shadow-slate-900/10 hover:shadow-slate-900/20 transform hover:-translate-y-0.5">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="px-7 py-3.5 bg-white text-primary border border-gray-200 rounded-lg font-medium hover:border-gray-300 hover:bg-gray-50 transition-all">
+                            Contact Me
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center gap-6 text-gray-400">
+                        <a href="#" class="hover:text-accent transition-colors"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="#" class="hover:text-accent transition-colors"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="hover:text-accent transition-colors"><i class="fab fa-kaggle text-2xl"></i></a>
+                        <a href="#" class="hover:text-accent transition-colors"><i class="fab fa-medium text-2xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="order-1 lg:order-2 flex justify-center lg:justify-end fade-in-up delay-200">
+                    <div class="relative w-72 h-72 sm:w-96 sm:h-96">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent to-blue-600 rounded-[2rem] rotate-6 opacity-20"></div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" 
+                             alt="Alex Morgan - Data Analyst" 
+                             class="relative w-full h-full object-cover rounded-[2rem] shadow-2xl border-4 border-white z-10">
+                        
+                        <!-- Floating Card -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 max-w-xs animate-bounce" style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-green-100 p-2 rounded-lg text-green-600">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-semibold uppercase">Latest Project</p>
+                                    <p class="text-sm font-bold text-primary">Sales KPI Dashboard</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif font-bold text-primary mb-4">Technical Proficiency</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Tools and technologies I use to extract, clean, analyze, and visualize data.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow border border-gray-100 group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-python text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Python Analysis</h3>
+                    <p class="text-sm text-gray-500 mb-4">Pandas, NumPy, Matplotlib, Scikit-learn for EDA and cleaning.</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                        <div class="bg-blue-600 h-1.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow border border-gray-100 group">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-database text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary mb-2">SQL & Databases</h3>
+                    <p class="text-sm text-gray-500 mb-4">PostgreSQL, MySQL. Joins, CTEs, Window Functions.</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                        <div class="bg-orange-500 h-1.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow border border-gray-100 group">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Data Visualization</h3>
+                    <p class="text-sm text-gray-500 mb-4">Tableau, Power BI. Creating interactive dashboards.</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                        <div class="bg-purple-600 h-1.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-shadow border border-gray-100 group">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-table text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary mb-2">Advanced Excel</h3>
+                    <p class="text-sm text-gray-500 mb-4">VLOOKUP, Pivot Tables, Power Query, Macros.</p>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                        <div class="bg-green-600 h-1.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-serif font-bold text-primary mb-4">Featured Projects</h2>
+                    <p class="text-gray-600 max-w-xl">Real-world data problems solved through code and visualization. <br>Check my GitHub for source code.</p>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center text-accent font-medium hover:text-accentHover mt-4 md:mt-0">
+                    View GitHub Profile <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Dashboard" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded">Tableau</span>
+                            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded">Excel</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">E-Commerce Sales Dashboard</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Analyzed over 50,000 transaction records to identify seasonal sales trends. Created an interactive Tableau dashboard highlighting top-performing regions and products, revealing a 15% underperformance in the Q3 electronics category.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-primary hover:text-accent transition-colors">
+                            View Analysis <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Code" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-2 py-1 bg-yellow-50 text-yellow-600 text-xs font-semibold rounded">Python</span>
+                            <span class="px-2 py-1 bg-green-50 text-green-600 text-xs font-semibold rounded">Pandas</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">Customer Churn Prediction</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Developed a predictive model using Logistic Regression to identify at-risk customers for a telecom dataset. Performed extensive data cleaning and feature engineering, achieving an accuracy of 82% in predicting churn events.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-primary hover:text-accent transition-colors">
+                            View Notebook <i class="fab fa-github ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-48 overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Analysis" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-2 py-1 bg-orange-50 text-orange-600 text-xs font-semibold rounded">SQL</span>
+                            <span class="px-2 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded">Power BI</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-2">Supply Chain Optimization</h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Optimized inventory management queries reducing report generation time by 40%. Visualized supply chain bottlenecks in Power BI, suggesting route optimizations that could theoretically save 10% in logistics costs.
+                        </p>
+                        <a href="#" class="inline-flex items-center text-sm font-semibold text-primary hover:text-accent transition-colors">
+                            View Case Study <i class="fas fa-file-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                 <a href="#" class="inline-flex items-center text-accent font-medium hover:text-accentHover">
+                    View GitHub Profile <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume / Experience Section -->
+    <section id="resume" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif font-bold text-primary mb-12 text-center">Experience & Education</h2>
+
+            <div class="relative border-l-2 border-gray-200 ml-4 md:ml-6 space-y-12">
+                
+                <!-- Experience Item -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-accent border-4 border-white shadow-sm"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-primary">Data Analyst Intern</h3>
+                        <span class="text-sm text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit">Jun 2024 - Present</span>
+                    </div>
+                    <h4 class="text-lg text-gray-700 font-medium mb-3">TechFlow Solutions</h4>
+                    <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm md:text-base">
+                        <li>Assisted senior analysts in cleaning datasets of 1M+ rows using Python (Pandas).</li>
+                        <li>Automated weekly reporting processes using SQL scripts, saving 5 hours of manual work per week.</li>
+                        <li>Created ad-hoc visualizations for marketing team presentations.</li>
+                    </ul>
+                </div>
+
+                <!-- Education Item -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white shadow-sm"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                        <h3 class="text-xl font-bold text-primary">B.Sc. in Statistics & Computer Science</h3>
+                        <span class="text-sm text-gray-500 font-medium bg-gray-100 px-3 py-1 rounded-full mt-2 sm:mt-0 w-fit">2020 - 2024</span>
+                    </div>
+                    <h4 class="text-lg text-gray-700 font-medium mb-3">University of Technology</h4>
+                    <p class="text-gray-600 text-sm md:text-base mb-2">Graduated with Honors (GPA: 3.8/4.0)</p>
+                    <ul class="list-disc list-outside ml-4 text-gray-600 space-y-2 text-sm md:text-base">
+                        <li><strong>Relevant Coursework:</strong> Database Management Systems, Regression Analysis, Data Structures, Machine Learning Basics.</li>
+                        <li><strong>Capstone Project:</strong> Analyzed public transit data to predict delays using historical weather patterns.</li>
+                    </ul>
+                </div>
+                
+                <!-- Certification Item -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-gray-300 border-4 border-white shadow-sm"></div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Google Data Analytics Professional Certificate</h3>
+                    <h4 class="text-lg text-gray-700 font-medium mb-3">Coursera</h4>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        Completed a rigorous 8-course series covering the entire data analysis process: ask, prepare, process, analyze, share, and act. Proficient in R programming and spreadsheet modeling.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-colors">
+                    <i class="fas fa-download mr-2"></i> Download Full Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-20 bg-primary text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold mb-6">Ready to decode your data?</h2>
+            <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
+                I am currently looking for full-time Junior Data Analyst opportunities. Whether you have a question or just want to say hi, my inbox is always open.
+            </p>
+            
+            <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 max-w-lg mx-auto">
+                <form onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');" class="space-y-4 text-left">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-blue-100 mb-1">Your Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="name@company.com" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-blue-100 mb-1">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Hi Alex, I'd like to discuss a job opportunity..." required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-accent hover:bg-accentHover text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg shadow-blue-500/20">
+                        Send Message
+                    </button>
+                    <p id="success-msg" class="hidden text-green-400 text-sm text-center mt-2 bg-green-900/20 py-2 rounded">Thanks! I'll get back to you shortly.</p>
+                </form>
+            </div>
+            
+            <div class="mt-12 flex justify-center space-x-8">
+                <a href="mailto:alex.morgan@example.com" class="flex flex-col items-center group">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-2 group-hover:bg-accent transition-colors">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <span class="text-sm text-blue-200">Email</span>
+                </a>
+                <a href="#" class="flex flex-col items-center group">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-2 group-hover:bg-accent transition-colors">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </div>
+                    <span class="text-sm text-blue-200">LinkedIn</span>
+                </a>
+                <a href="#" class="flex flex-col items-center group">
+                    <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-2 group-hover:bg-accent transition-colors">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </div>
+                    <span class="text-sm text-blue-200">Twitter</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-lg font-serif font-bold text-white">AM<span class="text-accent">.</span></span>
+            </div>
+            <div class="text-sm text-center md:text-right">
+                <p>&copy; 2024 Alex Morgan. All rights reserved.</p>
+                <p class="mt-1 text-xs">Built with HTML, Tailwind CSS & JS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md', 'bg-white/95', 'backdrop-blur-md');
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-white/95', 'backdrop-blur-md');
+            }
+        });
+
+        // Reveal Animations on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in animation to sections
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
